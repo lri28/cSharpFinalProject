@@ -1,0 +1,4 @@
+C:\Users\63908\Documents\Software Development\Term 2\SODV1202 - Introduction to Object-Oriented Programming\Connect4_FinalProject_Sub\csharpFinalProject_p1\obj\Debug\net6.0\csharpFinalProject_p1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\63908\Documents\Software Development\Term 2\SODV1202 - Introduction to Object-Oriented Programming\Connect4_FinalProject_Sub\csharpFinalProject_p1\obj\Debug\net6.0\csharpFinalProject_p1.AssemblyInfoInputs.cache
+C:\Users\63908\Documents\Software Development\Term 2\SODV1202 - Introduction to Object-Oriented Programming\Connect4_FinalProject_Sub\csharpFinalProject_p1\obj\Debug\net6.0\csharpFinalProject_p1.AssemblyInfo.cs
+C:\Users\63908\Documents\Software Development\Term 2\SODV1202 - Introduction to Object-Oriented Programming\Connect4_FinalProject_Sub\csharpFinalProject_p1\obj\Debug\net6.0\csharpFinalProject_p1.csproj.CoreCompileInputs.cache
