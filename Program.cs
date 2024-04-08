@@ -49,9 +49,40 @@ namespace ConnectFour
 
     class Program
     {
+    static char[,] board = new char[6, 7];  // The board is in 2D array
+    static Player player1;  // Player 1 instance
+    static Player player2;  // Player 2 instance [human or computer]
+    static bool player1Turn = true; // Player 1s turn indication
+
+    // Initialization of game board
+    // Initialize the game board with '#'character
+    static void InitializeBoard()
+    {
+        for (int row = 0; row < 6; row++)
+        {
+            for (int col = 0; col < 7; col++)
+            {
+                board[row, col] = '#';
+            }
+        }
     }
 
     // Prints the current game board
+    static void PrintBoard()
+    {
+        Console.WriteLine("\nConnect 4 Game Development Project:\n");
+
+        for (int row = 0; row < 6; row++)
+        {
+            for (int col = 0; col < 7; col++)
+
+            {
+                Console.Write(board[row, col] + " ");
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine("1 2 3 4 5 6 7"); // Column numbers to press by players
+    }
 
   
 
