@@ -88,9 +88,24 @@ namespace ConnectFour
 
     // Checks the validity of the move
 
+        static bool IsValidMove(int column)
+        {
+            return board[0, column] == '#';
+        }
 
     // Drops the item in the specified column
 
+        static void DropPiece(int column, char symbol)
+        {
+            for (int row = 5; row >= 0; row--)
+            {
+                if (board[row, column] == '#')
+                {
+                    board[row, column] = symbol;
+                    break;
+                }
+            }
+        }
 
     // Checks the winning combinations
 
