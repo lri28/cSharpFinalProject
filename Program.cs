@@ -108,12 +108,69 @@ namespace ConnectFour
         }
 
     // Checks the winning combinations
-
+static bool CheckForWin()
+{
+    // Check rows
+    for (int row = 0; row < 6; row++)
+    {
+        for (int col = 0; col < 4; col++)
+        {
+            if (board[row, col] != '#' &&
+                board[row, col] == board[row, col + 1] &&
+                board[row, col] == board[row, col + 2] &&
+                board[row, col] == board[row, col + 3])
+            {
+                return true;
+            }
+        }
+    }
 
     // Check columns
-
+    for (int col = 0; col < 7; col++)
+    {
+        for (int row = 0; row < 3; row++)
+        {
+            if (board[row, col] != '#' &&
+                board[row, col] == board[row + 1, col] &&
+                board[row, col] == board[row + 2, col] &&
+                board[row, col] == board[row + 3, col])
+            {
+                return true;
+            }
+        }
+    }
 
     // Check diagonals
+    for (int row = 0; row < 3; row++)
+    {
+        for (int col = 0; col < 4; col++)
+        {
+            if (board[row, col] != '#' &&
+                board[row, col] == board[row + 1, col + 1] &&
+                board[row, col] == board[row + 2, col + 2] &&
+                board[row, col] == board[row + 3, col + 3])
+            {
+                return true;
+            }
+        }
+    }
+
+    for (int row = 0; row < 3; row++)
+    {
+        for (int col = 3; col < 7; col++)
+        {
+            if (board[row, col] != '#' &&
+                board[row, col] == board[row + 1, col - 1] &&
+                board[row, col] == board[row + 2, col - 2] &&
+                board[row, col] == board[row + 3, col - 3])
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
 
 
 
