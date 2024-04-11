@@ -176,6 +176,21 @@ static bool CheckForWin()
 
     // Checks if all pieces drop which results to draw
 
+        static bool CheckForDraw()
+        {
+            for (int row = 0; row < 6; row++)
+            {
+                for (int col = 0; col < 7; col++)
+                {
+                    if (board[row, col] == '#')
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        } 
+        
     // Method to handle the game logic
 
     // Display the outcome
