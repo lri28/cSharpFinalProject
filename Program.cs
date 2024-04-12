@@ -192,6 +192,34 @@ static bool CheckForWin()
         } 
         
     // Method to handle the game logic
+static void PlayGame()
+{
+    InitializeBoard(); // Resets the game
+
+    do
+    {
+        PrintBoard(); // Prints the initial board or the board after each move
+
+        // Determine the current player
+        Player currentPlayer = player1Turn ? player1 : player2;
+        Console.WriteLine($"\n{currentPlayer.Name}'s turn ({currentPlayer.Symbol}):");
+        int column = currentPlayer.GetColumnChoice(); // Get the player's column choice
+
+        // Validate the column choice
+        if (column == -1 || !IsValidMove(column))
+        {
+            Console.WriteLine("\nInvalid column choice. Must be [1-7 only]");
+            continue; // Restart the loop for the current player's turn
+        }
+
+        DropPiece(column, currentPlayer.Symbol); // Drop the player's piece
+
+        Console.Clear(); // Clear the console before printing the updated board
+        //PrintBoard(); // Print the updated board after the move
+
+        player1Turn = !player1Turn; // Switch player's turn
+
+    } while (!CheckForWin() && !CheckForDraw());
 
     // Display the outcome
 
