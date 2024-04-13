@@ -223,7 +223,16 @@ static void PlayGame()
 
     // Display the outcome
 
-
+            if (CheckForWin())
+            {
+                Player winner = player1Turn ? player2 : player1;
+                Console.WriteLine($"\nIt is a Connect 4. {winner.Name} WINS!");
+            }
+            else
+            {
+                Console.WriteLine("\nThe game is a draw!");
+            }
+    
     // Main start of the program
 
             static void Main(string[] args)
