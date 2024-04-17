@@ -36,6 +36,22 @@ namespace ConnectFour
 
     class HumanPlayer : Player
     {
+	// Constructor initializing human player with two parameters
+public HumanPlayer(string name, char symbol) : base(name, symbol)
+{
+}
+
+// Implements the abstract method GetColumnChoice to get the column choice from the player
+public override int GetColumnChoice()
+{
+    int column;
+    if (!int.TryParse(Console.ReadLine(), out column) || column < 1 || column > 7)
+    {
+        return -1;
+    }
+    return column - 1;
+}
+	
     }
 
     // Class representing a computer player, inherits from Player
