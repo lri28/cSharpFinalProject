@@ -71,14 +71,14 @@ public override int GetColumnChoice()
     static bool player1Turn = true; // Player 1s turn indication
 
     // Initialization of game board
-    // Initialize the game board with '#'character
+    // Initialize the game board with '-'character
     static void InitializeBoard()
     {
         for (int row = 0; row < 6; row++)
         {
             for (int col = 0; col < 7; col++)
             {
-                board[row, col] = '#';
+                board[row, col] = '-';
             }
         }
     }
@@ -106,7 +106,7 @@ public override int GetColumnChoice()
 
         static bool IsValidMove(int column)
         {
-            return board[0, column] == '#';
+            return board[0, column] == '-';
         }
 
     // Drops the item in the specified column
@@ -115,7 +115,7 @@ public override int GetColumnChoice()
         {
             for (int row = 5; row >= 0; row--)
             {
-                if (board[row, column] == '#')
+                if (board[row, column] == '-')
                 {
                     board[row, column] = symbol;
                     break;
@@ -131,7 +131,7 @@ static bool CheckForWin()
     {
         for (int col = 0; col < 4; col++)
         {
-            if (board[row, col] != '#' &&
+            if (board[row, col] != '-' &&
                 board[row, col] == board[row, col + 1] &&
                 board[row, col] == board[row, col + 2] &&
                 board[row, col] == board[row, col + 3])
@@ -146,7 +146,7 @@ static bool CheckForWin()
     {
         for (int row = 0; row < 3; row++)
         {
-            if (board[row, col] != '#' &&
+            if (board[row, col] != '-' &&
                 board[row, col] == board[row + 1, col] &&
                 board[row, col] == board[row + 2, col] &&
                 board[row, col] == board[row + 3, col])
@@ -161,7 +161,7 @@ static bool CheckForWin()
     {
         for (int col = 0; col < 4; col++)
         {
-            if (board[row, col] != '#' &&
+            if (board[row, col] != '-' &&
                 board[row, col] == board[row + 1, col + 1] &&
                 board[row, col] == board[row + 2, col + 2] &&
                 board[row, col] == board[row + 3, col + 3])
@@ -175,7 +175,7 @@ static bool CheckForWin()
     {
         for (int col = 3; col < 7; col++)
         {
-            if (board[row, col] != '#' &&
+            if (board[row, col] != '-' &&
                 board[row, col] == board[row + 1, col - 1] &&
                 board[row, col] == board[row + 2, col - 2] &&
                 board[row, col] == board[row + 3, col - 3])
@@ -198,7 +198,7 @@ static bool CheckForWin()
             {
                 for (int col = 0; col < 7; col++)
                 {
-                    if (board[row, col] == '#')
+                    if (board[row, col] == '-')
                     {
                         return false;
                     }
