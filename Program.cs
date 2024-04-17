@@ -58,7 +58,19 @@ public override int GetColumnChoice()
 
     class ComputerPlayer : Player
     {
+	// Constructor initializing computer player with two parameters
+public ComputerPlayer(string name, char symbol) : base(name, symbol)
+{
+}
 
+// Implements the abstract method GetColumnChoice to get the column choice from the player
+public override int GetColumnChoice()
+{
+
+    // Generate a random column index between 0 and 6
+    Random random = new Random();
+    return random.Next(0, 7);
+}
     }
 
     // Program class
