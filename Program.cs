@@ -250,16 +250,20 @@ static void PlayGame()
     } while (!CheckForWin() && !CheckForDraw());
 
     // Display the outcome
-
             if (CheckForWin())
             {
                 Player winner = player1Turn ? player2 : player1;
-                Console.WriteLine($"\nIt is a Connect 4. {winner.Name} WINS!");
+                Console.WriteLine("\nIt is a Connect 4.");
+                Console.WriteLine("┌─────────────────────┐");
+                Console.WriteLine($"  \"{winner.Name}\" WINS!");
+                Console.WriteLine("└─────────────────────┘");
             }
             else
             {
                 Console.WriteLine("\nThe game is a draw!");
             }
+        }
+
     
     // Main start of the program
 
