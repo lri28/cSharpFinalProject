@@ -98,7 +98,7 @@ public override int GetColumnChoice()
     // Prints the current game board
     static void PrintBoard()
     {
-        Console.WriteLine("\nConnect 4 Game Development Project:\n");
+        Console.WriteLine("\nGame Development Project: Connect 4\n");
 
         for (int row = 0; row < 6; row++)
         {
@@ -224,7 +224,7 @@ static bool CheckForWin()
         } 
         
     // Method to handle the game logic
-static void PlayGame()
+static void PlayGame(Player p1, Player p2)
 {
     InitializeBoard(); // Resets the game
 
@@ -233,9 +233,21 @@ static void PlayGame()
         PrintBoard(); // Prints the initial board or the board after each move
 
         // Determine the current player
-        Player currentPlayer = player1Turn ? player1 : player2;
-        Console.WriteLine($"\n{currentPlayer.Name}'s turn ({currentPlayer.Symbol}):");
-        int column = currentPlayer.GetColumnChoice(); // Get the player's column choice
+        Player currentPlayer = player1Turn ? p1 : p2; 
+        Console.Write($"\n{currentPlayer.Name}'s turn ({currentPlayer.Symbol}): ");
+        
+	int column;
+        if (currentPlayer is HumanPlayer)
+        {
+           column = currentPlayer.GetColumnChoice();
+        }
+        else
+        {
+         column = currentPlayer.GetColumnChoice();
+         Console.WriteLine("Computer processing...");
+         Thread.Sleep(1500); // Delay for 1.5 seconds (1500milliseconds)
+         }
+
 
         // Validate the column choice
         if (column == -1 || !IsValidMove(column))
@@ -245,10 +257,9 @@ static void PlayGame()
         }
 
         DropPiece(column, currentPlayer.Symbol); // Drop the player's piece
-
         Console.Clear(); // Clear the console before printing the updated board
-        //PrintBoard(); // Print the updated board after the move
-
+        
+	//PrintBoard(); // Print the updated board after the move
         player1Turn = !player1Turn; // Switch player's turn
 
     } while (!CheckForWin() && !CheckForDraw());
@@ -271,40 +282,73 @@ static void PlayGame()
     
     // Main start of the program
 
-            static void Main(string[] args)
+           static void Main(string[] args)
         {
-            
-            Console.WriteLine("Connect 4 Game Development Project:\n");
-
-            // Initialize the game and players
-            Console.Write("Enter Player 1's name: ");   // Player's 1's name
-            string player1Name = Console.ReadLine();
-            player1 = new HumanPlayer(player1Name, 'X');    // Create player 1 instance as human
-
-            Console.Write("\nPlay against human or the computer?\n");
-            Console.Write("Type: [human] || [computer]: "); // Determine human or computer choice
-            string opponentChoice = Console.ReadLine().ToLower();
-
-            if (opponentChoice == "human")
+            do
             {
-                Console.Write("\nEnter Player 2's name: ");
-                string player2Name = Console.ReadLine();
-                player2 = new HumanPlayer(player2Name, 'O');    // Human instance
-            }
-            else if (opponentChoice == "computer")
-            {
-                player2 = new ComputerPlayer("Computer", 'O');  // Computer instance
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid choice. Default: Human Player.");
-                Console.Write("Enter Player 2's name: ");
-                string player2Name = Console.ReadLine();
-                player2 = new HumanPlayer(player2Name, 'O');
-            }
+                Console.WriteLine("Game Development Project: Connect 4\n");
+                Console.WriteLine("=====================");
+                Console.WriteLine("CHOOSE GAME MODE:");
+                Console.WriteLine("=====================");
+                Console.WriteLine("[1] Human vs. Human");
+                Console.WriteLine("[2] Human vs. Computer");
+                Console.WriteLine("[3] AI vs. AI");
+                Console.Write("\nEnter your choice [1-3]: ");
 
-            Console.WriteLine($"\n{player1.Name}: X | {player2.Name}: O\n");
+                int choice;
+                while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 3)
+                {
+                    Console.Write("Invalid choice. [Type 1, 2 or 3]: ");
+                }
 
-            
-  
-}
+                if (choice == 1)
+                {
+                    Console.Write("Enter Player 1's name: ");
+                    string player1Name = Console.ReadLine();
+                    player1 = new HumanPlayer(player1Name, 'X');
+
+                    Console.Write("Enter Player 2's name: ");
+                    string player2Name = Console.ReadLine();
+                    player2 = new HumanPlayer(player2Name, 'O');
+                }
+                else if (choice == 2)
+                {
+                    Console.Write("Enter your name: ");
+                    string playerName = Console.ReadLine();
+                    Console.WriteLine("You will play against the computer.");
+                    Thread.Sleep(3000); // Delay for 3 seconds (3000 milliseconds);
+                    player1 = new HumanPlayer(playerName, 'X');
+                    player2 = new ComputerPlayer("Computer", 'O');
+                }
+                else
+                {                  
+                    player1 = new ComputerPlayer("AI Player 1", 'X');
+                    player2 = new ComputerPlayer("AI Player 2", 'O');
+                    
+                }
+                
+                Console.WriteLine($"{player1.Name}: X | {player2.Name}: O");
+                PlayGame(player1, player2);
+               
+                string restartChoice;
+                do
+                {
+                    Console.Write("Restart? (Type 'yes' or 'no'): ");
+                    restartChoice = Console.ReadLine().ToLower();
+
+                    if (restartChoice != "yes" && restartChoice != "no")
+                    {
+                        Console.WriteLine("Invalid input. Please type 'yes' or 'no'");
+                    }
+                } while (restartChoice != "yes" && restartChoice != "no");
+
+                if (restartChoice == "no")
+                    break;
+
+                Console.Clear();
+
+            } while (true);
+
+            Console.WriteLine("\nThanks for playing!");
+        }
+
