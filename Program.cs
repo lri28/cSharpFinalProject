@@ -351,4 +351,5 @@ static void PlayGame(Player p1, Player p2)
 
             Console.WriteLine("\nThanks for playing!");
         }
-
+}
+}
