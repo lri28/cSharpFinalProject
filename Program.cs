@@ -109,7 +109,11 @@ public override int GetColumnChoice()
             }
             Console.WriteLine();
         }
-        Console.WriteLine("1 2 3 4 5 6 7"); // Column numbers to press by players
+
+	Console.WriteLine("─────────────"); 
+	Console.WriteLine("1 2 3 4 5 6 7"); // Column numbers to press by players
+	Console.WriteLine("─────────────");
+	    
     }
 
   
